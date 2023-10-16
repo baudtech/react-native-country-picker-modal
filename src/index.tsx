@@ -42,6 +42,7 @@ interface Props {
   disableNativeModal?: boolean
   visible?: boolean
   containerButtonStyle?: StyleProp<ViewStyle>
+  closeButtonImageStyle?: StyleProp<ViewStyle>
   renderFlagButton?(props: FlagButtonProps): ReactNode
   renderCountryFilter?(props: CountryFilterProps): ReactNode
   onSelect(country: Country): void
