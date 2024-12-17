@@ -50,7 +50,7 @@ interface Props {
   onClose?(): void
 }
 
-const Main = ({ theme, translation, ...props }: Props) => {
+const Main = ({ theme, translation, onSelect = () => {}, withEmoji = ...props }: Props) => {
   return (
     <ThemeProvider theme={{ ...DEFAULT_THEME, ...theme }}>
       <CountryProvider value={{ ...DEFAULT_COUNTRY_CONTEXT, translation }}>
@@ -58,11 +58,6 @@ const Main = ({ theme, translation, ...props }: Props) => {
       </CountryProvider>
     </ThemeProvider>
   )
-}
-
-Main.defaultProps = {
-  onSelect: () => {},
-  withEmoji: true,
 }
 
 export default Main

@@ -13,8 +13,10 @@ const styles = StyleSheet.create({
 
 export const CountryModal = ({
   children,
-  withModal,
-  disableNativeModal,
+  withModal = true,
+  disableNativeModal = false,
+  animated = true,
+  animationType = 'slide',
   ...props
 }: ModalProps & {
   children: React.ReactNode
@@ -30,24 +32,17 @@ export const CountryModal = ({
   )
   React.useEffect(() => {
     if (disableNativeModal) {
-      teleport!(<AnimatedModal {...props}>{content}</AnimatedModal>)
+      teleport!(<AnimatedModal {...props} withModal={withModal} disableNativeModal={disableNativeModal} animated={animated} animationType={animationType}>{content}</AnimatedModal>)
     }
   }, [disableNativeModal])
   if (withModal) {
     if (Platform.OS === 'web') {
-      return <Modal {...props}>{content}</Modal>
+      return <Modal {...props} withModal={withModal} disableNativeModal={disableNativeModal} animated={animated} animationType={animationType}>{content}</Modal>
     }
     if (disableNativeModal) {
       return null
     }
-    return <Modal {...props}>{content}</Modal>
+    return <Modal {...props} withModal={withModal} disableNativeModal={disableNativeModal} animated={animated} animationType={animationType}>{content}</Modal>
   }
   return content
-}
-
-CountryModal.defaultProps = {
-  animationType: 'slide',
-  animated: true,
-  withModal: true,
-  disableNativeModal: false,
 }

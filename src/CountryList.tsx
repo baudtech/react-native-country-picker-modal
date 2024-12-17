@@ -136,10 +136,6 @@ const CountryItem = (props: CountryItemProps) => {
     </TouchableOpacity>
   )
 }
-CountryItem.defaultProps = {
-  withFlag: true,
-  withCallingCode: false,
-}
 const MemoCountryItem = memo<CountryItemProps>(CountryItem)
 
 const renderItem =
@@ -175,13 +171,13 @@ export const CountryList = (props: CountryListProps) => {
     data,
     withAlphaFilter,
     withEmoji,
-    withFlag,
-    withCallingCode,
+    withFlag = true,
+    withCallingCode = false,
     withCurrency,
     onSelect,
     filter,
     flatListProps,
-    filterFocus,
+    filterFocus = undefined,
   } = props
 
   const flatListRef = useRef<FlatList<Country>>(null)
@@ -255,8 +251,4 @@ export const CountryList = (props: CountryListProps) => {
       )}
     </View>
   )
-}
-
-CountryList.defaultProps = {
-  filterFocus: undefined,
 }
